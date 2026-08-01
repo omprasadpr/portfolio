@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* Custom Glassmorphism & Glow Utility Classes */
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(17, 24, 39, 0.8);
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.25), 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+.glass-nav {
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+.purple-glow-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.45);
+  transition: all 0.3s ease;
+}
+
+.purple-glow-btn:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 10px rgba(168, 85, 247, 0.6);
+  transform: translateY(-2px);
+}
+
+.purple-glow-text {
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+}
+
+/* Custom Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-3deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.35), inset 0 0 15px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(139, 92, 246, 0.75), inset 0 0 25px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1b4b;
+  border-radius: 4px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
