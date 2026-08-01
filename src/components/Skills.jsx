@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Code, Layers, Server, Database, Wrench } from 'lucide-react';
+import { Cpu, Code, Layers, Server, Database, Wrench, Bot } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -41,6 +41,19 @@ const skillCategories = [
     ],
   },
   {
+    title: 'AI / ML',
+    icon: Bot,
+    color: 'from-purple-500/20 to-pink-500/20',
+    borderColor: 'border-purple-500/30',
+    iconColor: 'text-purple-400',
+    skills: [
+      { name: 'OpenAI API', icon: '🤖', glow: 'hover:shadow-purple-500/30 hover:border-purple-400/50' },
+      { name: 'Whisper API', icon: '🎙️', glow: 'hover:shadow-pink-500/30 hover:border-pink-400/50' },
+      { name: 'Prompt Engineering', icon: '💡', glow: 'hover:shadow-amber-500/30 hover:border-amber-400/50' },
+      { name: 'LLM Integration', icon: '🧠', glow: 'hover:shadow-indigo-500/30 hover:border-indigo-400/50' },
+    ],
+  },
+  {
     title: 'Database',
     icon: Database,
     color: 'from-blue-600/20 to-purple-500/20',
@@ -52,16 +65,19 @@ const skillCategories = [
     ],
   },
   {
-    title: 'Tools',
+    title: 'Tools & DevOps',
     icon: Wrench,
-    color: 'from-purple-500/20 to-pink-500/20',
-    borderColor: 'border-purple-500/30',
-    iconColor: 'text-purple-400',
+    color: 'from-indigo-500/20 to-purple-500/20',
+    borderColor: 'border-indigo-500/30',
+    iconColor: 'text-indigo-400',
     skills: [
       { name: 'Git', icon: '📦', glow: 'hover:shadow-orange-500/30 hover:border-orange-400/50' },
       { name: 'GitHub', icon: '🐙', glow: 'hover:shadow-slate-400/30 hover:border-slate-300/50' },
-      { name: 'VS Code', icon: '💻', glow: 'hover:shadow-blue-500/30 hover:border-blue-400/50' },
+      { name: 'Docker', icon: '🐳', glow: 'hover:shadow-blue-500/30 hover:border-blue-400/50' },
       { name: 'Postman', icon: '🚀', glow: 'hover:shadow-orange-600/30 hover:border-orange-500/50' },
+      { name: 'VS Code', icon: '💻', glow: 'hover:shadow-blue-400/30 hover:border-blue-300/50' },
+      { name: 'Render', icon: '🌐', glow: 'hover:shadow-teal-500/30 hover:border-teal-400/50' },
+      { name: 'Vercel', icon: '⚡', glow: 'hover:shadow-purple-500/30 hover:border-purple-400/50' },
     ],
   },
 ];
@@ -90,7 +106,7 @@ export default function Skills() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-['Poppins'] tracking-tight">
               Technical <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">Skills</span>
             </h2>
-            <p className="text-slate-400 text-sm">Technologies & tools I work with daily</p>
+            <p className="text-slate-400 text-sm">Technologies, AI models & tools I work with daily</p>
           </div>
         </motion.div>
 
@@ -105,31 +121,33 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                className="glass-card p-6 rounded-2xl border border-purple-500/20 relative group hover:border-purple-500/40 transition-all"
+                className="glass-card p-6 rounded-2xl border border-purple-500/20 relative group hover:border-purple-500/40 transition-all flex flex-col justify-between"
               >
-                {/* Category Header */}
-                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-purple-500/15">
-                  <div className={`p-2.5 rounded-xl bg-gradient-to-br ${category.color} border ${category.borderColor}`}>
-                    <IconComponent className={`w-5 h-5 ${category.iconColor}`} />
+                <div>
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3 mb-5 pb-4 border-b border-purple-500/15">
+                    <div className={`p-2.5 rounded-xl bg-gradient-to-br ${category.color} border ${category.borderColor}`}>
+                      <IconComponent className={`w-5 h-5 ${category.iconColor}`} />
+                    </div>
+                    <h3 className="text-xl font-bold text-white font-['Poppins']">
+                      {category.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold text-white font-['Poppins']">
-                    {category.title}
-                  </h3>
-                </div>
 
-                {/* Skill Pills List */}
-                <div className="flex flex-wrap gap-2.5">
-                  {category.skills.map((skill, sIdx) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ y: -4, scale: 1.03 }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                      className={`flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-purple-500/20 text-slate-200 text-sm font-medium shadow-sm cursor-default transition-all duration-300 ${skill.glow}`}
-                    >
-                      <span className="text-base">{skill.icon}</span>
-                      <span>{skill.name}</span>
-                    </motion.div>
-                  ))}
+                  {/* Skill Pills List */}
+                  <div className="flex flex-wrap gap-2.5">
+                    {category.skills.map((skill) => (
+                      <motion.div
+                        key={skill.name}
+                        whileHover={{ y: -4, scale: 1.03 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                        className={`flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900/80 border border-purple-500/20 text-slate-200 text-sm font-medium shadow-sm cursor-default transition-all duration-300 ${skill.glow}`}
+                      >
+                        <span className="text-base">{skill.icon}</span>
+                        <span>{skill.name}</span>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
